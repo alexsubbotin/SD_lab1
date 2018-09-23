@@ -77,10 +77,25 @@ namespace subb_lab1
 
             newVariable.IdentType = GetType(inputArr[0]);
 
+            newVariable.Name = inputArr[1];
+
             if (inputArr[2] != "" && inputArr[2] == "=")
                 newVariable.Value = inputArr[3];
 
             return newVariable;
+        }
+
+        private static Identifier CreateMethod(string input)
+        {
+            Method newMethod = new Method();
+
+            string[] inputArr = input.Split(' ');
+
+            newMethod.IdentUse = Identifier.IdentUses.METHODS;
+
+            newMethod.IdentType = GetType(inputArr[0]);
+
+            newMethod.Name = inputArr[1];
         }
 
         private static Identifier.IdentTypes GetType(string type)
