@@ -8,12 +8,17 @@ namespace subb_lab1
 {
     public class Method: Identifier
     {
-        public ParamList paramList;
+        public ParamList ParamList { get; set; }
 
         public Method(string name, IdentTypes identType, ParamList paramList):
             base(name, IdentUses.METHODS, identType)
         {
-            this.paramList = paramList;
+            ParamList = paramList;
+        }
+
+        public Method() : base()
+        {
+            ParamList = null;
         }
     }
 }
