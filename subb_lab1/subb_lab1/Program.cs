@@ -77,5 +77,16 @@ namespace subb_lab1
 
             return newConst;
         }
+
+        private static Identifier CreateClass(string input)
+        {
+            Class newClass = new Class();
+
+            string[] inputArr = input.Split(' ');
+
+            newClass.Name = inputArr[1];
+
+            return newClass;
+        }
     }
 }
