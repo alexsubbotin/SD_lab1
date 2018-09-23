@@ -11,11 +11,13 @@ namespace subb_lab1
     {
         static void Main(string[] args)
         {
-            
+
         }
 
-        public static void ParseFile()
+        public static Tree ParseFile()
         {
+            Tree tree = new Tree();
+
             StreamReader sr = new StreamReader("input.txt");
 
             string input = sr.ReadLine();
@@ -26,7 +28,10 @@ namespace subb_lab1
 
                 if (inputArr[0] == "const")
                 {
-
+                    if (tree.Identifier.Name == "")
+                        tree = new Tree(CreateConst(input));
+                    else
+                        Tree.AddTree(ref tree, CreateConst(input));
                 }
             }
         }
@@ -87,6 +92,11 @@ namespace subb_lab1
             newClass.Name = inputArr[1];
 
             return newClass;
+        }
+
+        private static Identifier CreateVariable(string input)
+        {
+
         }
     }
 }
