@@ -42,5 +42,10 @@ namespace subb_lab1
             IdentUse = identUse;
             IdentType = identType;
         }
+
+        public Identifier()
+        {
+            Name = "";
+        }
     }
 }
