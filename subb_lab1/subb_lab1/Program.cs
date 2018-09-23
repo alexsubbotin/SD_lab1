@@ -42,38 +42,9 @@ namespace subb_lab1
 
             string[] inputArr = input.Split(' ');
 
-            bool knownType = false;
+            newConst.IdentType = GetType(inputArr[1]);
 
-            switch (inputArr[1])
-            {
-                case "int":
-                    newConst.IdentType = Identifier.IdentTypes.int_type;
-                    knownType = true;
-                    break;
-
-                case "float":
-                    newConst.IdentType = Identifier.IdentTypes.float_type;
-                    knownType = true;
-                    break;
-
-                case "bool":
-                    newConst.IdentType = Identifier.IdentTypes.bool_type;
-                    knownType = true;
-                    break;
-
-                case "char":
-                    newConst.IdentType = Identifier.IdentTypes.char_type;
-                    knownType = true;
-                    break;
-
-                case "string":
-                    newConst.IdentType = Identifier.IdentTypes.string_type;
-                    knownType = true;
-                    break;
-            }
-
-            if (!knownType)
-                newConst.IdentType = Identifier.IdentTypes.class_type;
+            newConst.IdentUse = Identifier.IdentUses.CONSTS;
 
             newConst.Name = inputArr[2];
 
@@ -87,6 +58,8 @@ namespace subb_lab1
         {
             Class newClass = new Class();
 
+            newClass.IdentUse = Identifier.IdentUses.CLASSES;
+
             string[] inputArr = input.Split(' ');
 
             newClass.Name = inputArr[1];
@@ -96,7 +69,41 @@ namespace subb_lab1
 
         private static Identifier CreateVariable(string input)
         {
+            Variable newVariable = new Variable();
 
+            string[] inputArr = input.Split(' ');
+
+            newVariable.IdentUse = Identifier.IdentUses.VARS;
+
+            newVariable.IdentType = GetType(inputArr[0]);
+
+            if (inputArr[2] != "" && inputArr[2] == "=")
+                newVariable.Value = inputArr[3];
+
+            return newVariable;
+        }
+
+        private static Identifier.IdentTypes GetType(string type)
+        {
+            switch (type)
+            {
+                case "int":
+                    return Identifier.IdentTypes.int_type;
+
+                case "float":
+                    return Identifier.IdentTypes.float_type;
+
+                case "bool":
+                    return Identifier.IdentTypes.bool_type;
+
+                case "char":
+                    return Identifier.IdentTypes.char_type;
+
+                case "string":
+                    return Identifier.IdentTypes.string_type;
+            }
+
+            return Identifier.IdentTypes.class_type;
         }
     }
 }
