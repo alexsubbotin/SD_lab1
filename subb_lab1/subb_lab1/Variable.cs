@@ -9,5 +9,7 @@ namespace subb_lab1
     class Variable:Identifier
     {
         public Variable(string name, IdentUses identUse, IdentTypes identType) : base(name, IdentUses.VARS, identType) { }
+
+        public Variable() : base() { }
     }
 }
