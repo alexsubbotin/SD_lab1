@@ -9,5 +9,7 @@ namespace subb_lab1
     class Class:Identifier
     {
         public Class(string name) : base(name, IdentUses.CLASSES, IdentTypes.class_type) { }
+
+        public Class() : base() { }
     }
 }
