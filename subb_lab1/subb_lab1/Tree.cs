@@ -19,6 +19,13 @@ namespace subb_lab1
             Right = null;
         }
 
+        public Tree()
+        {
+            Identifier = null;
+            Left = null;
+            Right = null;
+        }
+
         public static void AddTree(ref Tree root, Identifier identifier)
         {
             if (root == null)
