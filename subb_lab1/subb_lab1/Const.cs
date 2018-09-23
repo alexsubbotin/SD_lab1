@@ -14,5 +14,10 @@ namespace subb_lab1
         {
             Value = value;
         }
+
+        public Const():base()
+        {
+            Value = null;
+        }
     }
 }
