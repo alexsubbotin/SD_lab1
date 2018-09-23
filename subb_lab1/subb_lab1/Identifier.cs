@@ -33,8 +33,8 @@ namespace subb_lab1
             }
             set { }
         }
-        protected IdentUses IdentUse { get; set; }
-        protected IdentTypes IdentType { get; set; }
+        public IdentUses IdentUse { get; set; }
+        public IdentTypes IdentType { get; set; }
 
         public Identifier(string name, IdentUses identUse, IdentTypes identType)
         {
