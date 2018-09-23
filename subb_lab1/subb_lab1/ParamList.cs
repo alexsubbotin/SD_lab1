@@ -25,6 +25,12 @@ namespace subb_lab1
             Value = value;
         }
 
+        public ParamList()
+        {
+            Name = null;
+            Value = null; ;
+        }
+
         public void AddParam(string name, Identifier.IdentTypes identType, ParamTypes paramType, object value)
         {
             ParamList curr = this;
