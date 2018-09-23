@@ -6,10 +6,18 @@ using System.Threading.Tasks;
 
 namespace subb_lab1
 {
-    class Variable:Identifier
+    class Variable : Identifier
     {
-        public Variable(string name, IdentUses identUse, IdentTypes identType) : base(name, IdentUses.VARS, identType) { }
+        public object Value { get; set; }
 
-        public Variable() : base() { }
+        public Variable(string name, IdentUses identUse, IdentTypes identType, object value) : base(name, IdentUses.VARS, identType)
+        {
+            Value = value;
+        }
+
+        public Variable() : base()
+        {
+            Value = null;
+        }
     }
 }
