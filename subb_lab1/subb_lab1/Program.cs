@@ -124,7 +124,7 @@ namespace subb_lab1
 
             newMethod.Name = inputArr[1].Substring(0, inputArr[1].IndexOf('('));
 
-            newMethod.ParamList = GetParams(input.Substring(input.IndexOf('(') + 1, input.Length - input.IndexOf('(') - 2));
+            newMethod.ParamList = GetParams(input.Substring(input.IndexOf('(') + 1, input.Length - input.IndexOf('(') - 3));
 
             return newMethod;
         }
