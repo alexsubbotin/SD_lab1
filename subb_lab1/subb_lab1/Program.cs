@@ -32,7 +32,7 @@ namespace subb_lab1
 
                 if (inputArr[0] == "const")
                 {
-                    if (tree.Identifier.Name == "")
+                    if (tree.Identifier == null)
                         tree = new Tree(CreateConst(input));
                     else
                         Tree.AddTree(ref tree, CreateConst(input));
@@ -40,22 +40,22 @@ namespace subb_lab1
 
                 if (inputArr[0] == "class")
                 {
-                    if (tree.Identifier.Name == "")
+                    if (tree.Identifier == null)
                         tree = new Tree(CreateClass(input));
                     else
                         Tree.AddTree(ref tree, CreateClass(input));
                 }
 
-                if(input.IndexOf('(') != -1 && input.IndexOf(')') != -1)
+                if (input.IndexOf('(') != -1 && input.IndexOf(')') != -1)
                 {
-                    if (tree.Identifier.Name == "")
+                    if (tree.Identifier == null)
                         tree = new Tree(CreateMethod(input));
                     else
                         Tree.AddTree(ref tree, CreateMethod(input));
                 }
                 else
                 {
-                    if (tree.Identifier.Name == "")
+                    if (tree.Identifier == null)
                         tree = new Tree(CreateVariable(input));
                     else
                         Tree.AddTree(ref tree, CreateVariable(input));
@@ -110,8 +110,9 @@ namespace subb_lab1
 
             newVariable.Name = inputArr[1];
 
-            if (inputArr[2] != "" && inputArr[2] == "=")
-                newVariable.Value = inputArr[3];
+            if (inputArr[2] != "")
+                if (inputArr[2] == "=")
+                    newVariable.Value = inputArr[3];
 
             return newVariable;
         }
@@ -139,11 +140,11 @@ namespace subb_lab1
 
             ParamList paramList = new ParamList();
 
-            for(int i = 0; i < paramArr.Length; i++)
+            for (int i = 0; i < paramArr.Length; i++)
             {
                 string[] oneParam = paramArr[i].Split(' ');
 
-                if(oneParam[0] == "ref")
+                if (oneParam[0] == "ref")
                 {
                     if (i == 0)
                         paramList = new ParamList(paramArr[1], GetType(paramArr[2]), ParamList.ParamTypes.LINK);
