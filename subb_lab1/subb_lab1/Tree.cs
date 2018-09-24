@@ -30,7 +30,7 @@ namespace subb_lab1
         {
             if (root == null)
             {
-                root.Identifier = identifier;
+                root = new Tree(identifier);
                 return;
             }
 

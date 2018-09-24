@@ -26,7 +26,7 @@ namespace subb_lab1
 
             string input = sr.ReadLine();
 
-            while (input != "")
+            while (input != null)
             {
                 string[] inputArr = input.Split(' ');
 
@@ -110,7 +110,7 @@ namespace subb_lab1
 
             newVariable.Name = inputArr[1];
 
-            if (inputArr[2] != "")
+            if (inputArr.Length > 2)
                 if (inputArr[2] == "=")
                     newVariable.Value = inputArr[3];
 
