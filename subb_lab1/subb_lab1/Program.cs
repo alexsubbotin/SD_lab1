@@ -188,5 +188,18 @@ namespace subb_lab1
 
             return Identifier.IdentTypes.class_type;
         }
+
+        static void ShowTree(Tree p, int l) // Печать дерева
+        {
+            if (p != null)
+            {
+                ShowTree(p.Left, l + 3);
+                for (int i = 0; i < l; i++)
+                    Console.Write(" ");
+                Console.WriteLine(p.Identifier.Name + " " + p.Identifier.Hash + " " + p.Identifier.IdentType + " " + p.Identifier.IdentUse);
+                ShowTree(p.Right, l + 3);
+
+            }
+        }
     }
 }
