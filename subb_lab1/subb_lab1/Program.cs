@@ -111,9 +111,28 @@ namespace subb_lab1
                 if(oneParam[0] == "ref")
                 {
                     if (i == 0)
-                        paramList = new ParamList(); // START HERE 
+                        paramList = new ParamList(paramArr[1], GetType(paramArr[2]), ParamList.ParamTypes.LINK);
+                    else
+                        paramList.AddParam(paramArr[1], GetType(paramArr[2]), ParamList.ParamTypes.LINK);
+                }
+
+                if (oneParam[0] == "out")
+                {
+                    if (i == 0)
+                        paramList = new ParamList(paramArr[1], GetType(paramArr[2]), ParamList.ParamTypes.OUT);
+                    else
+                        paramList.AddParam(paramArr[1], GetType(paramArr[2]), ParamList.ParamTypes.OUT);
+                }
+                else
+                {
+                    if (i == 0)
+                        paramList = new ParamList(paramArr[0], GetType(paramArr[1]), ParamList.ParamTypes.VALUE);
+                    else
+                        paramList.AddParam(paramArr[0], GetType(paramArr[1]), ParamList.ParamTypes.VALUE);
                 }
             }
+
+            return paramList;
         }
 
         private static Identifier.IdentTypes GetType(string type)
