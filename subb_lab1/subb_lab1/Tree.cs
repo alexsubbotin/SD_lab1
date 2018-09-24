@@ -38,11 +38,13 @@ namespace subb_lab1
             {
                 Tree buf = root.Left;
                 AddTree(ref buf, identifier);
+                root.Left = buf;
             }
             else
             {
                 Tree buf = root.Right;
                 AddTree(ref buf, identifier);
+                root.Right = buf;
             }
         }
     }
