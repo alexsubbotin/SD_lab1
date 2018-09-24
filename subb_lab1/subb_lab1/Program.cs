@@ -37,28 +37,32 @@ namespace subb_lab1
                     else
                         Tree.AddTree(ref tree, CreateConst(input));
                 }
-
-                if (inputArr[0] == "class")
-                {
-                    if (tree.Identifier == null)
-                        tree = new Tree(CreateClass(input));
-                    else
-                        Tree.AddTree(ref tree, CreateClass(input));
-                }
-
-                if (input.IndexOf('(') != -1 && input.IndexOf(')') != -1)
-                {
-                    if (tree.Identifier == null)
-                        tree = new Tree(CreateMethod(input));
-                    else
-                        Tree.AddTree(ref tree, CreateMethod(input));
-                }
                 else
                 {
-                    if (tree.Identifier == null)
-                        tree = new Tree(CreateVariable(input));
+                    if (inputArr[0] == "class")
+                    {
+                        if (tree.Identifier == null)
+                            tree = new Tree(CreateClass(input));
+                        else
+                            Tree.AddTree(ref tree, CreateClass(input));
+                    }
                     else
-                        Tree.AddTree(ref tree, CreateVariable(input));
+                    {
+                        if (input.IndexOf('(') != -1 && input.IndexOf(')') != -1)
+                        {
+                            if (tree.Identifier == null)
+                                tree = new Tree(CreateMethod(input));
+                            else
+                                Tree.AddTree(ref tree, CreateMethod(input));
+                        }
+                        else
+                        {
+                            if (tree.Identifier == null)
+                                tree = new Tree(CreateVariable(input));
+                            else
+                                Tree.AddTree(ref tree, CreateVariable(input));
+                        }
+                    }
                 }
 
                 input = sr.ReadLine();
@@ -151,20 +155,22 @@ namespace subb_lab1
                     else
                         paramList.AddParam(paramArr[1], GetType(paramArr[2]), ParamList.ParamTypes.LINK);
                 }
-
-                if (oneParam[0] == "out")
-                {
-                    if (i == 0)
-                        paramList = new ParamList(paramArr[1], GetType(paramArr[2]), ParamList.ParamTypes.OUT);
-                    else
-                        paramList.AddParam(paramArr[1], GetType(paramArr[2]), ParamList.ParamTypes.OUT);
-                }
                 else
                 {
-                    if (i == 0)
-                        paramList = new ParamList(paramArr[0], GetType(paramArr[1]), ParamList.ParamTypes.VALUE);
+                    if (oneParam[0] == "out")
+                    {
+                        if (i == 0)
+                            paramList = new ParamList(paramArr[1], GetType(paramArr[2]), ParamList.ParamTypes.OUT);
+                        else
+                            paramList.AddParam(paramArr[1], GetType(paramArr[2]), ParamList.ParamTypes.OUT);
+                    }
                     else
-                        paramList.AddParam(paramArr[0], GetType(paramArr[1]), ParamList.ParamTypes.VALUE);
+                    {
+                        if (i == 0)
+                            paramList = new ParamList(paramArr[0], GetType(paramArr[1]), ParamList.ParamTypes.VALUE);
+                        else
+                            paramList.AddParam(paramArr[0], GetType(paramArr[1]), ParamList.ParamTypes.VALUE);
+                    }
                 }
             }
 
