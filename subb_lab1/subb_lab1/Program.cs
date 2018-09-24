@@ -96,6 +96,10 @@ namespace subb_lab1
             newMethod.IdentType = GetType(inputArr[0]);
 
             newMethod.Name = inputArr[1].Substring(0, inputArr[1].IndexOf('('));
+
+            newMethod.ParamList = GetParams(input.Substring(input.IndexOf('(') + 1, input.Length - input.IndexOf('(') - 2));
+
+            return newMethod;
         }
 
         private static ParamList GetParams(string param)
