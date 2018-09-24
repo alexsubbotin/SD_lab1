@@ -33,7 +33,34 @@ namespace subb_lab1
                     else
                         Tree.AddTree(ref tree, CreateConst(input));
                 }
+
+                if (inputArr[0] == "class")
+                {
+                    if (tree.Identifier.Name == "")
+                        tree = new Tree(CreateClass(input));
+                    else
+                        Tree.AddTree(ref tree, CreateClass(input));
+                }
+
+                if(input.IndexOf('(') != -1 && input.IndexOf(')') != -1)
+                {
+                    if (tree.Identifier.Name == "")
+                        tree = new Tree(CreateMethod(input));
+                    else
+                        Tree.AddTree(ref tree, CreateMethod(input));
+                }
+                else
+                {
+                    if (tree.Identifier.Name == "")
+                        tree = new Tree(CreateVariable(input));
+                    else
+                        Tree.AddTree(ref tree, CreateVariable(input));
+                }
+
+                input = sr.ReadLine();
             }
+
+            return tree;
         }
 
         private static Identifier CreateConst(string input)
