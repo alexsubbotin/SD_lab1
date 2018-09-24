@@ -11,7 +11,11 @@ namespace subb_lab1
     {
         static void Main(string[] args)
         {
+            Tree tree = ParseFile();
 
+            ShowTree(tree, 0);
+
+            Console.ReadLine();
         }
 
         public static Tree ParseFile()
