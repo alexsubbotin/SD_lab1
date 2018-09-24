@@ -28,7 +28,7 @@ namespace subb_lab1
             Name = null;
         }
 
-        public void AddParam(string name, Identifier.IdentTypes identType, ParamTypes paramType, object value)
+        public void AddParam(string name, Identifier.IdentTypes identType, ParamTypes paramType)
         {
             ParamList curr = this;
 
@@ -37,7 +37,7 @@ namespace subb_lab1
                 curr = curr.Next;
             }
 
-            curr.Next = new ParamList(name, identType, paramType, value);
+            curr.Next = new ParamList(name, identType, paramType);
         }
     }
 }
