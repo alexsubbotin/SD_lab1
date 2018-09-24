@@ -13,22 +13,19 @@ namespace subb_lab1
         public string Name { get; set; }
         public Identifier.IdentTypes ParamIdentType { get; set; }
         public ParamTypes ParamType { get; set; }
-        public object Value { get; set; }
 
         public ParamList Next { get; set; }
 
-        public ParamList(string name, Identifier.IdentTypes identType, ParamTypes paramType, object value)
+        public ParamList(string name, Identifier.IdentTypes identType, ParamTypes paramType)
         {
             Name = name;
             ParamIdentType = identType;
             ParamType = paramType;
-            Value = value;
         }
 
         public ParamList()
         {
             Name = null;
-            Value = null; ;
         }
 
         public void AddParam(string name, Identifier.IdentTypes identType, ParamTypes paramType, object value)
