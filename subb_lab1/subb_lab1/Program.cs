@@ -95,7 +95,25 @@ namespace subb_lab1
 
             newMethod.IdentType = GetType(inputArr[0]);
 
-            newMethod.Name = inputArr[1];
+            newMethod.Name = inputArr[1].Substring(0, inputArr[1].IndexOf('('));
+        }
+
+        private static ParamList GetParams(string param)
+        {
+            string[] paramArr = param.Split(',');
+
+            ParamList paramList = new ParamList();
+
+            for(int i = 0; i < paramArr.Length; i++)
+            {
+                string[] oneParam = paramArr[i].Split(' ');
+
+                if(oneParam[0] == "ref")
+                {
+                    if (i == 0)
+                        paramList = new ParamList(); // START HERE 
+                }
+            }
         }
 
         private static Identifier.IdentTypes GetType(string type)
