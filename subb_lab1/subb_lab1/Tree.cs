@@ -36,13 +36,13 @@ namespace subb_lab1
 
             if (identifier.Hash < root.Identifier.Hash)
             {
-                root = root.Left;
-                AddTree(ref root, identifier);
+                Tree buf = root.Left;
+                AddTree(ref buf, identifier);
             }
             else
             {
-                root = root.Right;
-                AddTree(ref root, identifier);
+                Tree buf = root.Right;
+                AddTree(ref buf, identifier);
             }
         }
     }
